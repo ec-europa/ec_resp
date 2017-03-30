@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme settings.
@@ -7,7 +8,7 @@
 /**
  * Add toogle option to theme settings to enable/disable dropdown menu.
  */
-function ec_resp_16_form_system_theme_settings_alter(&$form, &$form_state) {
+function ec_resp_20_form_system_theme_settings_alter(&$form, &$form_state) {
   $form['dropdown_fieldset'] = array(
     '#type' => 'fieldset',
     '#title' => t('Dropdown menu settings'),
