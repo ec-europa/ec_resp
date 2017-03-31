@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation to display a block.
@@ -43,7 +42,6 @@
  *
  * @ingroup themeable
  */
-
 ?>
 <?php if (isset($welcome_message)) :?>
   <?php print $welcome_message; ?>

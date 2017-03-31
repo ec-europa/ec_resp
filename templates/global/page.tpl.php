@@ -1,8 +1,7 @@
 <?php
-
 /**
  * @file
- * ec_resp's theme implementation to display a single Drupal page.
+ * Ec_resp's theme implementation to display a single Drupal page.
  *
  * The doctype, html, head and body tags are not in this template. Instead they
  * can be found in the html.tpl.php template normally located in the
@@ -14,7 +13,7 @@
  * - $base_path: The base URL path of the Drupal installation. At the very
  *   least, this will always default to /.
  * - $directory: The directory the template is located in, e.g. modules/system
- *   or themes/ec_resp_20.
+ *   or themes/ec_resp.
  * - $is_front: TRUE if the current page is the front page.
  * - $logged_in: TRUE if the user is registered and signed in.
  * - $is_admin: TRUE if the user has permission to access administration pages.
@@ -92,7 +91,7 @@
  * @see template_preprocess()
  * @see template_preprocess_page()
  * @see template_process()
- * @see ec_resp_20_process_page()
+ * @see ec_resp_process_page()
  */
 ?>
 
@@ -108,14 +107,20 @@ global $base_url;
 
   <div id="layout-header">
     <div class="container">
-      <img alt="European Commission logo" id="banner-flag" src="<?php print $logo; ?>" />
+      <?php if (!empty($svg_logo)): ?>
+      <object id="banner-flag" data="<?php print $svg_logo; ?>" type="image/svg+xml">
+        <img alt="<?php print t('European Commission logo'); ?>" src="<?php print $logo; ?>" />
+      </object>
+      <?php elseif (!empty($logo)): ?>
+      <img alt="<?php print t('European Commission logo'); ?>" id="banner-flag" src="<?php print $logo; ?>" />
+      <?php endif; ?>
 
       <span id="banner-image-right" class="hidden-sm hidden-xs">
         <?php print $regions['header_right']; ?>
       </span>
 
       <div id="main-title"><?php print $site_name; ?></div>
-      <div id="sub-title" class="hidden-xs"><?php print $site_slogan; ?></div>
+      <div id="sub-title"><?php print $site_slogan; ?></div>
     </div>
   </div><!-- /#layout-header -->
 
