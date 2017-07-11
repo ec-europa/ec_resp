@@ -1560,9 +1560,8 @@ function ec_resp_preprocess_username(&$vars) {
 /**
  * Returns HTML for a dropdown.
  */
-function ec_resp_dropdown($variables) {
+function ec_resp_dropdown(array $variables) {
   $items = $variables['items'];
-  $attributes = array();
   $output = "";
 
   if (!empty($items)) {
@@ -1571,7 +1570,6 @@ function ec_resp_dropdown($variables) {
     }
     else {
       $output .= "<ul class='dropdown-menu'>";
-      $num_items = count($items);
       foreach ($items as $i => $item) {
         $data = '';
         if (is_array($item)) {
@@ -1582,7 +1580,7 @@ function ec_resp_dropdown($variables) {
           }
         }
         else {
-          $data = $item;
+          $data = l($i, $item);
         }
         $output .= '<li>' . $data . "</li>\n";
       }
