@@ -14,7 +14,8 @@
  * @see template_preprocess_maintenance_page()
  * @see ec_resp_process_maintenance_page()
  */
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="<?php print (isset($language) ? $language->language : "") ?>">
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
