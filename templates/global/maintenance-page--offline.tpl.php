@@ -40,12 +40,12 @@
     <div class="container">
       <div class="page-header">
         <?php if ($title): ?>
-          <h1><?php print t('The website is currently under maintenance'); ?></h1>
+          <h1>The website is currently under maintenance</h1>
         <?php endif; ?>
       </div>
 
       <div class="jumbotron">
-        <p><?php print t('We should be back shortly. Thank you for your patience.'); ?></p>
+        <p>We should be back shortly. Thank you for your patience.</p>
       </div>
     </div>
   </div>
