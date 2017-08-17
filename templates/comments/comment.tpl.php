@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Ec_resp's theme implementation for comments.
@@ -67,24 +68,24 @@
 
       <?php print render($title_prefix); ?>
       <div class="panel-heading">
-      <h4 class="panel-title">
-        <?php if ($new): ?>
-        <span class="label label-info"><?php print $new; ?></span>
-        <?php endif; ?>
-        <?php print $title; ?>
-      </h4>
+        <h4 class="panel-title">
+          <?php if ($new): ?>
+            <span class="label label-info"><?php print $new; ?></span>
+          <?php endif; ?>
+          <?php print $title; ?>
+        </h4>
       </div>
       <?php print render($title_suffix); ?>
 
       <div class="panel-body content"<?php print $content_attributes; ?>>
         <?php
-          hide($content['links']);
-          print render($content);
+        hide($content['links']);
+        print render($content);
         ?>
         <?php if ($signature): ?>
-        <div class="user-signature clearfix">
-          <?php print $signature; ?>
-        </div>
+          <div class="user-signature clearfix">
+            <?php print $signature; ?>
+          </div>
         <?php endif; ?>
 
         <div class="comment-links row">
@@ -98,9 +99,9 @@
             <small>
               <div class="commenter-name"><?php print $author; ?>,</div>
               <div class="comment-time text-muted"><?php print $comment_created; ?></div>
-           </small>
-          </div>      
-          
+            </small>
+          </div>
+
         </div> <!-- /.comment-links -->
       </div> <!-- /.content -->
     </div> <!-- /.panel -->

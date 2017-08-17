@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme implementation to display the simplenews block.
@@ -14,8 +15,8 @@
  * @see template_preprocess_simplenews_multi_block()
  */
 ?>
-  <?php if ($message): ?>
-    <p><?php print $message; ?></p>
-  <?php endif; ?>
+<?php if ($message): ?>
+  <p><?php print $message; ?></p>
+<?php endif; ?>
 
-  <?php print render($form); ?>
+<?php print render($form); ?>

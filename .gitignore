@@ -1,0 +1,7 @@
+vendor
+composer.lock
+grumphp.yml
+phpunit.xml
+bootstrap
+scripts/*.min.js
+.idea/

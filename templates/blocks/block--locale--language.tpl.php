@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme implementation to display a block.
@@ -43,6 +44,6 @@
  * @ingroup themeable
  */
 ?>
-  <ul class="reset-list language-selector" id="language-selector">
+<ul class="reset-list language-selector" id="language-selector">
   <?php print $language_list; ?>
-  </ul>
+</ul>

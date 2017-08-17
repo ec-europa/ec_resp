@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme implementation to display a block.
@@ -46,13 +47,13 @@
 <div id="slider" class="news tabbable tabs-right">
   <div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>  panel panel-primary clearfix"<?php print $attributes; ?>>
 
-  <?php print render($title_prefix); ?>
-  <?php if ($block->subject): ?>
-    <div class="panel-heading">
-      <?php print $block->subject ?>
-    </div>
-  <?php endif;?>
-  <?php print render($title_suffix); ?>
+    <?php print render($title_prefix); ?>
+    <?php if ($block->subject): ?>
+      <div class="panel-heading">
+        <?php print $block->subject ?>
+      </div>
+    <?php endif;?>
+    <?php print render($title_suffix); ?>
 
     <div class="content panel-body"<?php print $content_attributes; ?>>
       <?php print $content ?>

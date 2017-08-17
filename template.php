@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme functions.
@@ -314,7 +315,7 @@ function ec_resp_preprocess_html(&$variables) {
       // If the metatag title exists, it must be used
       // to construct the title page.
       if ($node && isset($node->field_meta_title) && !empty($node->field_meta_title)) {
-        $title = strip_tags($node->field_meta_title['und'][0]['value']);
+        $title = strip_tags($node->field_meta_title[LANGUAGE_NONE][0]['value']);
       }
       else {
         $title = strip_tags($node->title);
@@ -524,7 +525,7 @@ function ec_resp_page_alter(&$page) {
   if (!empty($node)) {
     // If the metatag title exists, it must be used to construct the title page.
     if (isset($node->field_meta_title) && !empty($node->field_meta_title)) {
-      $title = filter_xss($node->field_meta_title['und'][0]['value']);
+      $title = filter_xss($node->field_meta_title[LANGUAGE_NONE][0]['value']);
     }
     else {
       $title = $node_title . ' - ' . $title;
@@ -535,7 +536,7 @@ function ec_resp_page_alter(&$page) {
   if (!empty($node) && !empty($node->field_tags)) {
     $tags = field_view_field('node', $node, 'field_tags');
     if (isset($tags['#items'])) {
-      foreach ($tags['#items'] as $key => $value) {
+      foreach ($tags['#items'] as $value) {
         $keywords .= $value['taxonomy_term']->name . ', ';
       }
     }
@@ -932,7 +933,7 @@ function ec_resp_menu_link__menu_breadcrumb_menu(array $variables) {
 
   // Check CSS classes.
   $last = FALSE;
-  foreach ($element['#attributes']['class'] as $key => $class) {
+  foreach ($element['#attributes']['class'] as $class) {
     if ($class == 'last') {
       $last = TRUE;
       break;
@@ -1394,15 +1395,15 @@ function ec_resp_preprocess_block(&$variables) {
         $languages = language_list();
 
         $items = array();
+        $label = t("Current language");
         $items[] = array(
-          'data' => '<span class="off-screen">' . t("Current language") . ':</span> ' . $language->language,
+          'data' => '<span class="off-screen">' . $label . ':</span> ' . $language->language,
           'class' => array('selected'),
           'title' => $language->native,
           'lang' => $language->language,
         );
         // Get path of translated content.
         $translations = translation_path_get_translations(current_path());
-        $language_default = language_default();
 
         foreach ($languages as $language_object) {
           $prefix = $language_object->language;
@@ -1420,7 +1421,6 @@ function ec_resp_preprocess_block(&$variables) {
           // with suffix url is enabled.
           $language_negociation = variable_get('language_negotiation_language');
           if (isset($language_negociation['locale-url-suffix'])) {
-            $delimiter = variable_get('language_suffix_delimiter', '_');
             $alias = drupal_get_path_alias($path, $prefix);
 
             if ($alias == variable_get('site_frontpage', 'node')) {
@@ -1618,7 +1618,7 @@ function ec_resp_table($variables) {
 
   // Format the table columns:
   if (count($colgroups)) {
-    foreach ($colgroups as $number => $colgroup) {
+    foreach ($colgroups as $colgroup) {
       $attributes = array();
 
       // Check if we're dealing with a simple or complex column.
@@ -1697,7 +1697,7 @@ function ec_resp_table($variables) {
       'odd' => 'even',
     );
     $class = 'even';
-    foreach ($rows as $number => $row) {
+    foreach ($rows as $row) {
       // Check if we're dealing with a simple or complex row.
       if (isset($row['data'])) {
         foreach ($row as $key => $value) {
@@ -1784,7 +1784,7 @@ function ec_resp_nexteuropa_multilingual_language_list(array $variables) {
  * @return string
  *   Formatted HTML column displaying the list of provided languages.
  */
-function _ec_resp_nexteuropa_multilingual_language_list_column($languages, $path, $options) {
+function _ec_resp_nexteuropa_multilingual_language_list_column(array $languages, $path, array $options) {
   $content = '<div class="col-sm-6">';
   foreach ($languages as $language) {
     $options['attributes']['lang'] = $language->language;

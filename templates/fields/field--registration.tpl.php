@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default template implementation to display the value of a field.
@@ -50,10 +51,10 @@
   <?php endif; ?>
   <div class="field-items"<?php print $content_attributes; ?>>
     <?php foreach ($items as $delta => $item): ?>
-        <?php
-        // Get field type.
-        $field_classes = (isset($item['#form_id']) ? 'well' : 'btn btn-success');
-        ?>
+      <?php
+      // Get field type.
+      $field_classes = (isset($item['#form_id']) ? 'well' : 'btn btn-success');
+      ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?> <?php print $field_classes; ?>"<?php print $item_attributes[$delta]; ?>>
         <?php print render($item); ?>
       </div>

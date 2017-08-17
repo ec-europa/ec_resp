@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme implementation to display a block.
@@ -43,11 +44,10 @@
  * @ingroup themeable
  */
 ?>
-
 <div id="main-menu" class="<?php print $classes; ?>">
   <div class="navbar navbar-default" data-spy="affix" data-offset-top="165">
     <div class="container">
-      
+
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <?php print $content ?>
