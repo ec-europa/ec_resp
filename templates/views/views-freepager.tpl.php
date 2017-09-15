@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default view template to display Free Pager.
@@ -25,7 +26,6 @@
  * @ingroup views_templates
  */
 ?>
-
 <?php if (!empty($previous)): ?>
   <span class="freepager-previous">
     <?php print $previous_linked; ?>

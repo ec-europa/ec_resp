@@ -27,28 +27,28 @@
 
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
 
-  <div id="layout-header">
-    <div class="container">
-      <img alt="European Commission logo" id="banner-flag" src="<?php print $logo; ?>" />
+<div id="layout-header">
+  <div class="container">
+    <img alt="European Commission logo" id="banner-flag" src="<?php print $logo; ?>" />
 
-      <div id="main-title">Site Offline</div>
-      <div id="sub-title"></div>
+    <div id="main-title">Site Offline</div>
+    <div id="sub-title"></div>
+  </div>
+</div><!-- /#layout-header -->
+
+<div class="panel panel-default">
+  <div class="container">
+    <div class="page-header">
+      <?php if ($title): ?>
+        <h1>The website is currently under maintenance</h1>
+      <?php endif; ?>
     </div>
-  </div><!-- /#layout-header -->
 
-  <div class="panel panel-default">
-    <div class="container">
-      <div class="page-header">
-        <?php if ($title): ?>
-          <h1>The website is currently under maintenance</h1>
-        <?php endif; ?>
-      </div>
-
-      <div class="jumbotron">
-        <p>We should be back shortly. Thank you for your patience.</p>
-      </div>
+    <div class="jumbotron">
+      <p>We should be back shortly. Thank you for your patience.</p>
     </div>
   </div>
+</div>
 
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Ec_resp's theme implementation to display a node.
@@ -90,27 +91,27 @@
 
   <?php
   // We hide the comments and links now so that we can render them later.
-    hide($content['comments']);
-    hide($content['links']);
+  hide($content['comments']);
+  hide($content['links']);
   ?>
 
   <div class="content clearfix"<?php print $content_attributes; ?>>
-  <?php if ($watched): ?>
-    <div class="clearfix"><span class="label label-success pull-right"><span class="glyphicon glyphicon-eye-open"></span><?php print $watched; ?></span></div>
-  <?php endif; ?>
-  <?php print render($content); ?>
-  <?php if ($display_submitted): ?>
-    <div class="row node-info">
-      <div class="node-info-submitted col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-6">
-        <div class="well well-sm node-submitted clearfix">
-          <small>
-          <?php print $user_picture; ?>
-          <?php print $submitted; ?>
-          </small>
+    <?php if ($watched): ?>
+      <div class="clearfix"><span class="label label-success pull-right"><span class="glyphicon glyphicon-eye-open"></span><?php print $watched; ?></span></div>
+    <?php endif; ?>
+    <?php print render($content); ?>
+    <?php if ($display_submitted): ?>
+      <div class="row node-info">
+        <div class="node-info-submitted col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-6">
+          <div class="well well-sm node-submitted clearfix">
+            <small>
+              <?php print $user_picture; ?>
+              <?php print $submitted; ?>
+            </small>
+          </div>
         </div>
       </div>
-    </div>
-  <?php endif; ?>
+    <?php endif; ?>
   </div>
 
   <div class="link-wrapper right">

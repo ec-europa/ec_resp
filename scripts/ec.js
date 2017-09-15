@@ -2,7 +2,8 @@
  * @file
  * Duplicate of europa script
  */
-(function($){  
+
+(function ($) {
 	Drupal.behaviors.ec_resp_test = {
     attach: function(context, settings) {
 			var translations = { // All translations used in webservice

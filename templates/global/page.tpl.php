@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Ec_resp's theme implementation to display a single Drupal page.
@@ -94,171 +95,168 @@
  * @see ec_resp_process_page()
  */
 ?>
+<?php global $base_url; ?>
 
-<?php
-global $base_url;
-?>
+<a id="top-page"></a>
 
-  <a id="top-page"></a>
+<div class="container">
+  <?php print $regions['header_top']; ?>
+</div>
 
+<div id="layout-header">
   <div class="container">
-    <?php print $regions['header_top']; ?>
-  </div>
-
-  <div id="layout-header">
-    <div class="container">
-      <?php if (!empty($svg_logo)): ?>
+    <?php if (!empty($svg_logo)): ?>
       <object id="banner-flag" data="<?php print $svg_logo; ?>" type="image/svg+xml">
         <img alt="<?php print t('European Commission logo'); ?>" src="<?php print $logo; ?>" />
       </object>
-      <?php elseif (!empty($logo)): ?>
+    <?php elseif (!empty($logo)): ?>
       <img alt="<?php print t('European Commission logo'); ?>" id="banner-flag" src="<?php print $logo; ?>" />
-      <?php endif; ?>
+    <?php endif; ?>
 
-      <span id="banner-image-right" class="hidden-sm hidden-xs">
+    <span id="banner-image-right" class="hidden-sm hidden-xs">
         <?php print $regions['header_right']; ?>
       </span>
 
-      <div id="main-title"><?php print $site_name; ?></div>
-      <div id="sub-title"><?php print $site_slogan; ?></div>
-    </div>
-  </div><!-- /#layout-header -->
-
-  <div class="region-featured-wrapper <?php print ($has_responsive_sidebar ? 'sidebar-visible-sm' : ''); ?>">
-    <?php if ($menu_visible || $has_responsive_sidebar): ?>
-      <div class="mobile-user-bar navbar navbar-default visible-sm visible-xs" data-spy="affix" data-offset-top="82">
-        <div class="container">
-
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header" data-spy="affix" data-offset-top="165">
-            <?php if ($menu_visible): ?>
-              <button id="menu-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <div class="arrow-down"></div>
-              </button>
-            <?php endif; ?>
-
-            <?php if ($has_responsive_sidebar): ?>
-              <div class="sidebar-button-wrapper">
-                <button class="sidebar-button">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
-            <?php endif; ?>
-          </div>
-        </div><!-- /.container -->
-      </div><!-- /.navbar -->
-    <?php endif; ?>
-
-    <?php print $regions['featured']; ?>
-
+    <div id="main-title"><?php print $site_name; ?></div>
+    <div id="sub-title"><?php print $site_slogan; ?></div>
   </div>
+</div><!-- /#layout-header -->
 
-  <?php if ($has_responsive_sidebar): ?>
-    <div id="responsive-sidebar">
-      <div id="responsive-header-right"></div>
-      <div id="responsive-sidebar-left"></div>
-      <div id="responsive-sidebar-right"></div>
-    </div><!-- /#responsive-sidebar-->
+<div class="region-featured-wrapper <?php print ($has_responsive_sidebar ? 'sidebar-visible-sm' : ''); ?>">
+  <?php if ($menu_visible || $has_responsive_sidebar): ?>
+    <div class="mobile-user-bar navbar navbar-default visible-sm visible-xs" data-spy="affix" data-offset-top="82">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" data-spy="affix" data-offset-top="165">
+          <?php if ($menu_visible): ?>
+            <button id="menu-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <div class="arrow-down"></div>
+            </button>
+          <?php endif; ?>
+
+          <?php if ($has_responsive_sidebar): ?>
+            <div class="sidebar-button-wrapper">
+              <button class="sidebar-button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+          <?php endif; ?>
+        </div>
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
   <?php endif; ?>
 
-  <div id="layout-body" class="container">
-    <div class="row">
-      <?php print render($title_prefix); ?>
+  <?php print $regions['featured']; ?>
 
-      <?php if ($title): ?>
-        <?php $title_image = (isset($node->field_thumbnail[LANGUAGE_NONE][0]['uri']) && $node->type == 'community' ? image_style_url('communities_thumbnail', $node->field_thumbnail[LANGUAGE_NONE][0]['uri']) : '');?>
-        <h1 class="col-lg-<?php print $cols['title']['lg']; ?> col-md-<?php print $cols['title']['md']; ?> col-sm-<?php print $cols['title']['sm']; ?> col-xs-<?php print $cols['title']['xs']; ?>" id="page-title">
-          <?php if ($title_image): ?>
-            <img src="<?php print $title_image; ?>" alt="<?php print $title; ?>" />
-          <?php endif; ?>
-          <?php print $title; ?>
-        </h1>
-      <?php endif; ?>
+</div>
 
-      <?php print render($title_suffix); ?>
+<?php if ($has_responsive_sidebar): ?>
+  <div id="responsive-sidebar">
+    <div id="responsive-header-right"></div>
+    <div id="responsive-sidebar-left"></div>
+    <div id="responsive-sidebar-right"></div>
+  </div><!-- /#responsive-sidebar-->
+<?php endif; ?>
 
-      <div class="col-lg-<?php print $cols['tools']['lg']; ?> col-md-<?php print $cols['tools']['md']; ?> col-sm-<?php print $cols['tools']['sm']; ?> col-xs-<?php print $cols['tools']['xs']; ?>">
-        <?php print $regions['tools']; ?>
-      </div>
-    </div>
+<div id="layout-body" class="container">
+  <div class="row">
+    <?php print render($title_prefix); ?>
 
-    <?php if ($messages): ?>
-    <div id="messages">
-        <?php print $messages; ?>
-    </div><!-- /#messages -->
+    <?php if ($title): ?>
+      <?php $title_image = (isset($node->field_thumbnail[LANGUAGE_NONE][0]['uri']) && $node->type == 'community' ? image_style_url('communities_thumbnail', $node->field_thumbnail[LANGUAGE_NONE][0]['uri']) : '');?>
+      <h1 class="col-lg-<?php print $cols['title']['lg']; ?> col-md-<?php print $cols['title']['md']; ?> col-sm-<?php print $cols['title']['sm']; ?> col-xs-<?php print $cols['title']['xs']; ?>" id="page-title">
+        <?php if ($title_image): ?>
+          <img src="<?php print $title_image; ?>" alt="<?php print $title; ?>" />
+        <?php endif; ?>
+        <?php print $title; ?>
+      </h1>
     <?php endif; ?>
 
-    <div class="row">
-      <?php if ($regions['sidebar_left']): ?>
+    <?php print render($title_suffix); ?>
+
+    <div class="col-lg-<?php print $cols['tools']['lg']; ?> col-md-<?php print $cols['tools']['md']; ?> col-sm-<?php print $cols['tools']['sm']; ?> col-xs-<?php print $cols['tools']['xs']; ?>">
+      <?php print $regions['tools']; ?>
+    </div>
+  </div>
+
+  <?php if ($messages): ?>
+    <div id="messages">
+      <?php print $messages; ?>
+    </div><!-- /#messages -->
+  <?php endif; ?>
+
+  <div class="row">
+    <?php if ($regions['sidebar_left']): ?>
       <div id="sidebar-left" class="col-lg-<?php print ($cols['sidebar_left']['lg']); ?> col-md-<?php print ($cols['sidebar_left']['md']); ?> col-sm-<?php print ($cols['sidebar_left']['sm']); ?> col-xs-<?php print ($cols['sidebar_left']['xs']); ?> sidebar-left visible-lg visible-md">
         <?php print $regions['sidebar_left']; ?>
       </div>
-      <?php endif; ?>
+    <?php endif; ?>
 
-      <div id="content-wrapper" class="col-lg-<?php print $cols['content_main']['lg']; ?> col-md-<?php print $cols['content_main']['md']; ?> col-sm-<?php print $cols['content_main']['sm']; ?> col-md-<?php print $cols['content_main']['xs']; ?>">
+    <div id="content-wrapper" class="col-lg-<?php print $cols['content_main']['lg']; ?> col-md-<?php print $cols['content_main']['md']; ?> col-sm-<?php print $cols['content_main']['sm']; ?> col-md-<?php print $cols['content_main']['xs']; ?>">
 
-        <a id="content"></a>
+      <a id="content"></a>
 
-        <?php if ($title): ?>
+      <?php if ($title): ?>
         <h1 class="title" id="content-title">
           <?php print $title; ?>
         </h1>
-        <?php endif; ?>
+      <?php endif; ?>
 
-        <?php print $regions['content_top']; ?>
+      <?php print $regions['content_top']; ?>
 
-        <a id="main-content"></a>
+      <a id="main-content"></a>
 
-        <?php if ($tabs): ?>
+      <?php if ($tabs): ?>
         <div class="tabs">
           <?php print render($tabs); ?>
         </div>
-        <?php endif; ?>
+      <?php endif; ?>
 
-        <?php print $regions['help']; ?>
+      <?php print $regions['help']; ?>
 
-        <?php if ($action_links): ?>
+      <?php if ($action_links): ?>
         <ul class="action-links">
           <?php print render($action_links); ?>
         </ul>
-        <?php endif; ?>
-
-        <div class="row">
-          <div class="col-lg-<?php print $cols['content']['lg']; ?> col-md-<?php print $cols['content']['md']; ?> col-sm-<?php print $cols['content']['sm']; ?> col-xs-<?php print $cols['content']['xs']; ?>">
-          <?php print $regions['content']; ?>
-          </div>
-
-          <div class="col-lg-<?php print $cols['content_right']['lg']; ?> col-md-<?php print $cols['content_right']['md']; ?> col-sm-<?php print $cols['content_right']['sm']; ?> col-xs-<?php print $cols['content_right']['xs']; ?>">
-          <?php print $regions['content_right']; ?>
-          </div>
-        </div>
-
-        <?php print $feed_icons; ?>
-
-        <?php print $regions['content_bottom']; ?>
-      </div>
-
-      <div class="clearfix visible-sm visible-xs"></div>
-      <?php if ($cols['sidebar_right']['md'] == 12): ?>
-      <div class="clearfix visible-md"></div>
       <?php endif; ?>
 
-      <?php if ($regions['sidebar_right']): ?>
+      <div class="row">
+        <div class="col-lg-<?php print $cols['content']['lg']; ?> col-md-<?php print $cols['content']['md']; ?> col-sm-<?php print $cols['content']['sm']; ?> col-xs-<?php print $cols['content']['xs']; ?>">
+          <?php print $regions['content']; ?>
+        </div>
+
+        <div class="col-lg-<?php print $cols['content_right']['lg']; ?> col-md-<?php print $cols['content_right']['md']; ?> col-sm-<?php print $cols['content_right']['sm']; ?> col-xs-<?php print $cols['content_right']['xs']; ?>">
+          <?php print $regions['content_right']; ?>
+        </div>
+      </div>
+
+      <?php print $feed_icons; ?>
+
+      <?php print $regions['content_bottom']; ?>
+    </div>
+
+    <div class="clearfix visible-sm visible-xs"></div>
+    <?php if ($cols['sidebar_right']['md'] == 12): ?>
+      <div class="clearfix visible-md"></div>
+    <?php endif; ?>
+
+    <?php if ($regions['sidebar_right']): ?>
       <div id="sidebar-right" class="col-lg-<?php print ($cols['sidebar_right']['lg']); ?> col-md-<?php print ($cols['sidebar_right']['md']); ?> col-sm-<?php print ($cols['sidebar_right']['sm']); ?> col-xs-<?php print ($cols['sidebar_right']['xs']); ?> sidebar-right visible-lg visible-md">
         <?php print $regions['sidebar_right']; ?>
       </div>
-      <?php endif; ?>
-    </div>
-  </div><!-- /#layout-body -->
+    <?php endif; ?>
+  </div>
+</div><!-- /#layout-body -->
 
-  <a href="#top-page" class="btn-back-top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a>
+<a href="#top-page" class="btn-back-top">
+  <span class="glyphicon glyphicon-chevron-up"></span>
+</a>
 
-  <div id="layout-footer">
-    <div class="container">
-      <?php print $regions['footer']; ?>
-    </div>
-  </div><!-- /#layout-footer -->
+<div id="layout-footer">
+  <div class="container">
+    <?php print $regions['footer']; ?>
+  </div>
+</div><!-- /#layout-footer -->

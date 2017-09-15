@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme implementation to display a block.
@@ -47,5 +48,5 @@
   <?php print $welcome_message; ?>
 <?php endif; ?>
 <div id="<?php print $block_html_id; ?>" class="btn-group <?php print $classes; ?>">
-  <?php print $menu_items; ?>    
+  <?php print $menu_items; ?>
 </div>
