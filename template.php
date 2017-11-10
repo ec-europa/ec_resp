@@ -1184,9 +1184,15 @@ function ec_resp_link($variables) {
     }
   }
   $path = ($variables['path'] == '<nolink>') ? '#' : check_plain(url($variables['path'], $variables['options']));
+  $path = ($variables['path'] == '<nolink>') ? '#' : check_plain(url($variables['path'], $variables['options']));
+
+  $variables += array('options' => array());
+  $variables['options'] += array('attributes' => array());
+  $options_attributes = drupal_attributes($variables['options']['attributes']);
+  
   $output = $action_bar_before . $btn_group_before .
     '<a href="' . $path . '"' .
-    drupal_attributes($variables['options']['attributes']) . '>' . $decoration .
+    $options_attributes . '>' . $decoration .
     ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) .
     '</a>' . $btn_group_after . $action_bar_after;
   return $output;
