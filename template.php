@@ -329,7 +329,7 @@ function ec_resp_preprocess_html(&$variables) {
       $variables['head_title'] = t('EUROPA - !title', array('!title' => $title));
     }
     else {
-      $variables['head_title'] = t('!title - European Commission', array('!title' => $title));
+      $variables['head_title'] = t('!title | European Commission', array('!title' => $title));
     }
   }
 
