@@ -1004,6 +1004,7 @@ function ec_resp_menu_local_tasks(&$variables) {
 function ec_resp_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'nexteuropa_europa_search_search_form':
+      $form['search_input_group']['QueryText']['#title_display'] = 'invisible';
       if (theme_get_setting('enable_interinstitutional_theme')) {
         $form['search_input_group']['europa_search_submit']['#type'] = 'image_button';
         $form['search_input_group']['europa_search_submit']['#src'] = drupal_get_path('theme', 'ec_resp') . '/images/search-button.gif';
