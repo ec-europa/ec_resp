@@ -175,7 +175,6 @@ function ec_resp_preprocess_node(&$variables) {
         )
       );
   }
-
 }
 
 /**
@@ -184,6 +183,12 @@ function ec_resp_preprocess_node(&$variables) {
 function ec_resp_preprocess_file_entity(&$variables) {
   if ($variables['view_mode'] == "media_gallery_colorbox") {
     $variables['classes_array'][] = "col-lg-2 col-md-3 col-xs-6";
+  }
+
+  $file_info = $variables['content']['file']['#item'];
+  // Passing the right title so the image_formatter template can use it instead of "alt text" value.
+  if (isset($file_info['attributes']['title'])) {
+    $variables['content']['file']['#item']['title'] = $file_info['attributes']['title'];
   }
 }
 
