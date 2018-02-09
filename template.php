@@ -1769,8 +1769,8 @@ function ec_resp_nexteuropa_multilingual_language_list(array $variables) {
   $first_half = array_slice($variables['languages'], 0, $half);
   $second_half = array_slice($variables['languages'], $half);
 
-  $content .= _ec_resp_nexteuropa_multilingual_language_list_column($first_half, $variables['path'], $options);
-  $content .= _ec_resp_nexteuropa_multilingual_language_list_column($second_half, $variables['path'], $options);
+  $content .= _ec_resp_nexteuropa_multilingual_language_list_column($first_half, $variables['path'], $options, $variables['all_paths']);
+  $content .= _ec_resp_nexteuropa_multilingual_language_list_column($second_half, $variables['path'], $options, $variables['all_paths']);
 
   $content .= '</div>';
 
@@ -1790,14 +1790,16 @@ function ec_resp_nexteuropa_multilingual_language_list(array $variables) {
  * @return string
  *   Formatted HTML column displaying the list of provided languages.
  */
-function _ec_resp_nexteuropa_multilingual_language_list_column($languages, $path, $options) {
+function _ec_resp_nexteuropa_multilingual_language_list_column($languages, $path, $options, $all_paths) {
   $content = '<div class="col-sm-6">';
   foreach ($languages as $language) {
     $options['attributes']['lang'] = $language->language;
     $options['attributes']['hreflang'] = $language->language;
     $options['attributes']['class'] = 'btn splash-page__btn-language';
     $options['language'] = $language;
-    $content .= l($language->native, $path, $options);
+
+    $translated_path = (!empty($all_paths)) ? $all_paths[$language->language] : $path;
+    $content .= l($language->native, $translated_path, $options);
   }
   $content .= '</div>';
 
