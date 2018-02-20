@@ -1786,6 +1786,10 @@ function ec_resp_nexteuropa_multilingual_language_list(array $variables) {
  *   The internal path being linked to.
  * @param array $options
  *   An associative array of additional options.
+ * @param array $all_paths
+ *   An associative array of paths keyed by their language code.
+ *   If it is not empty, the array items will be used to generate the links of
+ *   language list.
  *
  * @return string
  *   Formatted HTML column displaying the list of provided languages.
