@@ -1794,7 +1794,7 @@ function ec_resp_nexteuropa_multilingual_language_list(array $variables) {
  * @return string
  *   Formatted HTML column displaying the list of provided languages.
  */
-function _ec_resp_nexteuropa_multilingual_language_list_column($languages, $path, $options, $all_paths) {
+function _ec_resp_nexteuropa_multilingual_language_list_column($languages, $path, $options, $all_paths = array()) {
   $content = '<div class="col-sm-6">';
   foreach ($languages as $language) {
     $options['attributes']['lang'] = $language->language;
@@ -1802,7 +1802,11 @@ function _ec_resp_nexteuropa_multilingual_language_list_column($languages, $path
     $options['attributes']['class'] = 'btn splash-page__btn-language';
     $options['language'] = $language;
 
-    $translated_path = (!empty($all_paths)) ? $all_paths[$language->language] : $path;
+    $translated_path = $path;
+    if (!empty($all_paths[$language->language])) {
+      $translated_path = $all_paths[$language->language];
+    }
+
     $content .= l($language->native, $translated_path, $options);
   }
   $content .= '</div>';
