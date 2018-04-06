@@ -736,7 +736,7 @@ function ec_resp_page_alter(&$page) {
  */
 function ec_resp_block_view_alter(&$data, $block) {
 
-  if ($block->region == 'sidebar_left' || $block->region == 'sidebar_right') {
+  if (!empty($block->region) && in_array($block->region, array('sidebar_left', 'sidebar_right'))) {
     // Add classes to list.
     $data['content'] = (isset($data['content']) ? str_replace('<ul>', '<ul class="list-group list-group-flush list-unstyled">', $data['content']) : '');
 
