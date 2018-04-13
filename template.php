@@ -204,8 +204,8 @@ function ec_resp_preprocess_user_profile(&$variables) {
   }
 
   $date = '';
-  if ($user = user_load(arg(1))) {
-    $date_string = format_date($user->created, 'custom', 'd/m/Y');
+  if (!empty($variables['user'])) {
+    $date_string = format_date($variables['user']->created, 'custom', 'd/m/Y');
     $args = array('@date' => $date_string);
     $date .= t('Member since @date', $args);
   }
