@@ -925,7 +925,6 @@ function ec_resp_menu_link($variables) {
  */
 function ec_resp_menu_link__menu_breadcrumb_menu(array $variables) {
   $element = $variables['element'];
-
   $sub_menu = '';
   $separator = variable_get('easy_breadcrumb-segments_separator');
 
