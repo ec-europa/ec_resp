@@ -925,6 +925,7 @@ function ec_resp_menu_link($variables) {
  */
 function ec_resp_menu_link__menu_breadcrumb_menu(array $variables) {
   $element = $variables['element'];
+
   $sub_menu = '';
   $separator = variable_get('easy_breadcrumb-segments_separator');
 
@@ -1549,12 +1550,16 @@ function ec_resp_preprocess_block(&$variables) {
         $variables['menu_items'] = implode('', $items);
         break;
 
-      case 'easy_breadcrumb-easy_breadcrumb':
-        $variables['menu_breadcrumb'] = menu_tree('menu-breadcrumb-menu');
-        break;
+      // case 'easy_breadcrumb-easy_breadcrumb':
+        // $variables['menu_breadcrumb'] = menu_tree('menu-breadcrumb-menu');
+        // break;
 
     }
   }
+}
+
+function ec_resp_preprocess_easy_breadcrumb(array &$variables, $hook) {
+  $variables['menu_breadcrumb'] = menu_tree('menu-breadcrumb-menu');
 }
 
 /**
