@@ -8112,11 +8112,6 @@ ul.menu li.expanded {
 .sidebar-button .icon-bar + .icon-bar {
   margin-top: 4px;
 }
-/* --------------- Admin menu  --------------- */
-#admin-menu,
-#admin-menu .dropdown {
-  z-index: 1040;
-}
 /* ------------------ service links ------------------ */
 #services,
 #block-menu-menu-service-tools .menu {
